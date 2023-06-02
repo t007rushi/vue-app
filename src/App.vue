@@ -4,6 +4,7 @@
 <Button title="close"></Button>
 <CreateTasks/> 
 <Tasks :tasks="tasks"/>
+<Footer ></Footer>
 </template>
 
   <script >
@@ -11,6 +12,7 @@ import Home from "./components/Home.vue"
 import Button from "./components/Button.vue";
 import CreateTasks from './components/CreateTask.vue';
 import Tasks from "./components/Tasks.vue";
+import Footer from "./components/Footer.vue";
 
   
   export default{
@@ -20,6 +22,7 @@ components : {
     Button,
     CreateTasks,
     Tasks,
+    Footer
 },
 data(){
   return { 
