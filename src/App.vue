@@ -1,12 +1,55 @@
-<script setup>
-import Home from "./components/Home.vue"
-</script>
 
 <template>
-<Home />
-
-  <RouterView />
+<Home title="Hello World"/>
+<Button title="close"></Button>
+<CreateTasks/> 
+<Tasks :tasks="tasks"/>
 </template>
+
+  <script >
+import Home from "./components/Home.vue"
+import Button from "./components/Button.vue";
+import CreateTasks from './components/CreateTask.vue';
+import Tasks from "./components/Tasks.vue";
+
+  
+  export default{
+    name : "app",
+components : {
+    Home,
+    Button,
+    CreateTasks,
+    Tasks,
+},
+data(){
+  return { 
+    tasks : []
+  }
+},
+ created() {
+  this.tasks = [
+    {
+      "id": "1",
+      "text": "Doctors Appointment",
+      "day": "March 5th at 2:30pm",
+      "reminder": true
+    },
+    {
+      "id": "2",
+      "text": "Meeting with boss",
+      "day": "March 6th at 1:30pm",
+      "reminder": true
+    },
+    {
+      "id": "3",
+      "text": "Food shopping",
+      "day": "March 7th at 2:00pm",
+      "reminder": false
+    }
+  ]
+ }
+  }
+  </script>
 
 <style scoped>
 header {
