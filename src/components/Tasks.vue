@@ -1,5 +1,5 @@
 <template>
-  <div :class="[task.reminder ? 'reminder' : '', 'task']" :key="task.id" v-for="task in tasks">
+  <div @click="$emit('toggle-rem',task.id)" :class="[task.reminder ? 'reminder' : '', 'task']" :key="task.id" v-for="task in tasks">
    <task :task = "task" @delete-task="$emit('delete-task',task.id)"/>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
       type: Array,
     }
   },
-  emits : ['delete-task'],
+  emits : ['delete-task','toggle-rem'],
 
 }
 </script>

@@ -5,8 +5,8 @@
       <Home title="Task Tracker" />
       <Button title="close" color="red"></Button>
     </div>
-    <CreateTasks />
-    <Tasks @delete-task="deleteTask" :tasks="tasks" />
+    <CreateTasks @add-task="AddTask"/>
+    <Tasks @delete-task="deleteTask" :tasks="tasks" @toggle-rem="toggleRem" />
     <Footer></Footer>
   </div>
 </template>
@@ -33,6 +33,17 @@ export default {
       tasks: []
     }
   },
+      methods : {
+        deleteTask(id){
+    this.tasks = this.tasks.filter(task  => task.id !== id);
+        },
+        toggleRem(id){
+    this.tasks = this.tasks.map(task =>task.id === id ?{...task, "reminder":!task.reminder} : task)
+        },
+        AddTask(newTask){
+this.tasks = [...this.tasks, newTask]
+        }
+      },
   created() {
     this.tasks = [
       {
@@ -55,11 +66,6 @@ export default {
       }
     ]
   },
-  methods : {
-    deleteTask(id){
-this.tasks = this.tasks.filter(task  => task.id !== id);
-    }
-  }
 }
 </script>
 
