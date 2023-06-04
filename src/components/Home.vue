@@ -4,16 +4,15 @@
 
 <script>
 
-export default{
-    name : "Home",
-    props : {
-        title : {
-            type : String,
-            default : "Hello Rushi"
+export default {
+    name: "Home",
+    props: {
+        title: {
+            type: String,
+            default: "Hello Rushi"
         }
     }
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

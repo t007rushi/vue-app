@@ -1,5 +1,5 @@
 <template>
-  <button @click="action()">{{ title }}</button>
+  <button class = "btn" @click="action()" :style="{backgroundColor : color}">{{ title }}</button>
 </template>
 
 <script>
@@ -9,11 +9,14 @@ props : {
   title : {
     type : String,
     default : "click me"
+  },
+  color : {
+      type : String
   }
 },
 methods : {
 action : () => {
-    console.log("Hellow consolers");
+    console.log("Hello consolers");
 }
 }
 }
