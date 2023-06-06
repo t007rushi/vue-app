@@ -2,10 +2,12 @@
 <template>
   <div class="container">
     <div class="flex">
-      <Home title="Task Tracker" />
-      <Button title="close" color="red"></Button>
+      <Home title="Task Tracker" @toggle-add-task="toggler()" :showAddTask="showAddTask"/>
     </div>
-    <CreateTasks @add-task="AddTask"/>
+    <div v-show="showAddTask">
+
+    <CreateTasks @add-task="AddTask" />
+    </div>
     <Tasks @delete-task="deleteTask" :tasks="tasks" @toggle-rem="toggleRem" />
     <Footer></Footer>
   </div>
@@ -13,7 +15,6 @@
 
 <script >
 import Home from "./components/Home.vue"
-import Button from "./components/Button.vue";
 import CreateTasks from './components/CreateTask.vue';
 import Tasks from "./components/Tasks.vue";
 import Footer from "./components/Footer.vue";
@@ -23,14 +24,14 @@ export default {
   name: "app",
   components: {
     Home,
-    Button,
     CreateTasks,
     Tasks,
     Footer
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      showAddTask : false,
     }
   },
       methods : {
@@ -42,30 +43,19 @@ export default {
         },
         AddTask(newTask){
 this.tasks = [...this.tasks, newTask]
+        },
+        toggler(){
+          this.showAddTask = !this.showAddTask;
+        },
+        async fetchTask(){
+          const res = await fetch("api/tasks");
+          const data = await res.json();
+          return data;
         }
       },
-  created() {
-    this.tasks = [
-      {
-        "id": "1",
-        "text": "Doctors Appointment",
-        "day": "March 5th at 2:30pm",
-        "reminder": true
-      },
-      {
-        "id": "2",
-        "text": "Meeting with boss",
-        "day": "March 6th at 1:30pm",
-        "reminder": true
-      },
-      {
-        "id": "3",
-        "text": "Food shopping",
-        "day": "March 7th at 2:00pm",
-        "reminder": false
-      }
-    ]
-  },
+  async created() {
+    this.tasks = await this.fetchTask()
+  }
 }
 </script>
 
