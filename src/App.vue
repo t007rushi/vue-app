@@ -48,7 +48,7 @@ this.tasks = [...this.tasks, newTask]
           this.showAddTask = !this.showAddTask;
         },
         async fetchTask(){
-          const res = await fetch("api/tasks");
+          const res = await fetch("http://localhost:5000/tasks");
           const data = await res.json();
           return data;
         }
