@@ -7,7 +7,7 @@
 import Button from "./Button.vue";
 
 export default {
-    name: "Home",
+    name: 'Home',
     props: {
         title: String,
         showAddTask : Boolean,

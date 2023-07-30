@@ -1,6 +1,9 @@
 
 <template>
   <div class="container">
+  <router-link to="/">Home</router-link>
+  <router-link to="/about">About</router-link>
+  <router-view></router-view>
     <div class="flex">
       <Home title="Task Tracker" @toggle-add-task="toggler()" :showAddTask="showAddTask"/>
     </div>
