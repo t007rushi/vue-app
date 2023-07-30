@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home'
-import About from '../views/About'
+import Footer from "../components/Footer.vue"
+import About from '../views/About.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Footer',
+    component: Footer,
   },
   {
     path: '/about',
@@ -16,8 +16,9 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
 })
+
 
 export default router
