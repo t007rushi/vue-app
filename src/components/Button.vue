@@ -15,10 +15,11 @@ props : {
   }
 },
 methods : {
-action : () => {
-    console.log("Hello consolers");
+action () {
+this.$emit('toggle-add-task');
 }
-}
+},
+emits : ['toggle-add-task']
 }
 </script>
 
